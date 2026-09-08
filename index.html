@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Happyyy birthdayyy bunnnyyy — a cinematic pastel blue birthday love letter experience for my bunny 🐰💙">
+  <title>Happyyy birthdayyy bunnnyyy 🐰💙</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Scroll Navigation Dots -->
+  <nav class="scroll-indicator" id="scrollNav" aria-label="Scene navigation">
+    <div class="scroll-dot active" data-scene="0" title="Opening"></div>
+    <div class="scroll-dot" data-scene="1" title="Starry Night"></div>
+    <div class="scroll-dot" data-scene="2" title="Garden of Love"></div>
+    <div class="scroll-dot" data-scene="3" title="Letterrr to Bunny"></div>
+    <div class="scroll-dot" data-scene="4" title="Finale"></div>
+  </nav>
+
+  <!-- =============================================
+       SCENE 1 — THE OPENING
+       ============================================= -->
+  <section class="scene scene-1" id="scene-1">
+    <!-- Big heart watermark -->
+    <div class="big-heart-bg" aria-hidden="true">♡</div>
+
+    <!-- Falling Petals -->
+    <div class="petals-container" id="petalsContainer" aria-hidden="true"></div>
+
+    <div class="scene-1-content">
+      <p class="opening-tagline reveal">Happyyy birthdayyy bunnnyyy</p>
+      <h1 class="opening-title reveal reveal-delay-1">Happyyy<br>birthdayyy bunnnyyy</h1>
+      <div class="hero-bunny-wrap reveal reveal-delay-1">
+        <img src="Images/bunny.gif" alt="cute bunnyyy hops" class="hero-bunny-gif" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif'">
+      </div>
+      <div class="typewriter-wrap">
+        <p class="typewriter-text reveal reveal-delay-2">
+          <span id="typedText"></span><span class="typed-cursor">|</span>
+        </p>
+      </div>
+      <div class="scroll-hint reveal reveal-delay-3">
+        <p>Scroll to begin the journey</p>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SCENE 2 — STARRY NIGHT
+       ============================================= -->
+  <section class="scene scene-2" id="scene-2">
+    <div class="stars-container" id="starsContainer" aria-hidden="true"></div>
+    <div class="moon" aria-hidden="true"></div>
+    <div class="floating-sparkles" id="sparklesContainer" aria-hidden="true"></div>
+    <div class="snow-container" id="snowContainer" aria-hidden="true"></div>
+
+    <div class="scene-2-content">
+      <blockquote class="quote reveal">"In the quiet of the night,<br>I found you."</blockquote>
+      <div class="snowman-audio-wrap reveal reveal-delay-2">
+        <button class="btn-audio" id="snowmanPlayBtn" aria-label="Play Snowman by Sia">
+          <span class="btn-audio-icon">❄️▶</span>
+          <span class="btn-audio-text">here, play this love</span>
+        </button>
+        <p class="audio-hint">Snowman — Sia ♡</p>
+        <audio id="snowmanLocal" preload="metadata" loop style="display:none">
+          <source src="Images/snowman-sia.mp3" type="audio/mpeg">
+          <source src="Images/snowman-sia.webm" type="audio/webm">
+        </audio>
+        <div id="yt-player" style="position:absolute; left:50%; top:50%; width:200px; height:200px; opacity:0.01; pointer-events:none; transform:translate(-50%,-50%); overflow:hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SCENE 3 — GARDEN OF LOVE
+       ============================================= -->
+  <section class="scene scene-3" id="scene-3">
+    <!-- Background ripple overlay -->
+    <div class="scene3-ripple" id="scene3Ripple" aria-hidden="true"></div>
+    <!-- Background floating particles container -->
+    <div class="scene3-bg-particles" id="scene3BgParticles" aria-hidden="true"></div>
+
+    <div class="scene-3-content">
+      <p class="section-label reveal">Our Garden</p>
+      <h2 class="section-title reveal reveal-delay-1">Garden of Love</h2>
+      <div class="quote-card reveal reveal-delay-2" id="quoteCard">
+        <div class="quote-inner">
+          <span class="quote-mark">"</span>
+          <p id="loveQuote"></p>
+          <span class="quote-mark close-quote">"</span>
+        </div>
+        <div class="quote-counter" id="quoteCounter">1 / 8</div>
+      </div>
+      <div id="petalEmitter" class="petal-emitter" aria-hidden="true"></div>
+      <button class="btn-rose reveal reveal-delay-3" id="pickRoseBtn" aria-label="Pick a pink rose to reveal a quote">
+        <img src="Images/pink-rose.gif" alt="pink rose blooming" class="btn-rose-img" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://media.giphy.com/media/l4pTdcifPZLpDjL1e/giphy.gif'">
+        <span>Pick a Pink Rose</span>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- =============================================
+       SCENE 4 — LETTERRR TO HIM (BUNNY BIRTHDAY) — now the only letter
+       ============================================= -->
+  <section class="scene scene-bunny" id="scene-bunny">
+    <div class="scene-bunny-content">
+      <p class="section-label reveal">Letterrr to Him</p>
+      <h2 class="section-title reveal reveal-delay-1">Happy birthday, Bunny <span aria-hidden="true">🐰❤️</span></h2>
+
+      <!-- Bunny Envelope -->
+      <div class="envelope-wrap reveal reveal-delay-2">
+        <div class="envelope envelope-bunny" id="envelopeBunny" role="button" aria-label="Click to open the bunny birthday letter" tabindex="0">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-bottom-left"></div>
+            <div class="envelope-bottom-right"></div>
+            <div class="wax-seal bunny-seal" aria-hidden="true">🐰</div>
+          </div>
+        </div>
+        <p class="reveal reveal-delay-3" style="margin-top:1rem; font-family:var(--font-serif); font-style:italic; color:var(--rose-gold);">
+          Click the bunny envelope to open 💌🐰
+        </p>
+      </div>
+
+      <!-- Bunny Letter Paper -->
+      <div class="letter-paper letter-paper-bunny" id="letterPaperBunny">
+        <div class="corner-bunny" aria-hidden="true"><img src="Images/bunny.gif" alt="cute bunnyyy" class="bunny-gif" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif'"></div>
+        <div class="letter-lines bunny-letter-lines">
+          <span class="letter-heading bunny-heading" id="bunnyHeading"></span>
+          <p class="letter-body bunny-body" id="bunnyBody"></p>
+          <p class="letter-sign bunny-sign" id="bunnySign">I love you. And honestly… I don't think I know how to say just *how much*. Maybe you can just feel it. ❤️🐰</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SCENE 5 — THE FINALE (was 6)
+       ============================================= -->
+  <section class="scene scene-6" id="scene-6">
+    <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+
+    <div class="scene-6-content">
+
+      <!-- Big Heart -->
+      <span class="big-heart" aria-hidden="true">🐰💙</span>
+
+      <!-- Main Title -->
+      <h2 class="finale-title">Happyyy birthdayyy bunnnyyy</h2>
+      <p class="finale-sub">My favorite bunny, forever 🐰💙</p>
+
+      <!-- Divider -->
+      <div class="finale-divider" aria-hidden="true">
+        <span></span><span class="divider-heart">♥</span><span></span>
+      </div>
+
+      <!-- Typewriter poem -->
+      <div class="finale-poem">
+        <p class="poem-line" id="poemLine1"></p>
+        <p class="poem-line" id="poemLine2"></p>
+        <p class="poem-line" id="poemLine3"></p>
+        <p class="poem-line" id="poemLine4"></p>
+      </div>
+
+      <!-- Floating love note cards (bunny birthday) -->
+      <div class="finale-notes">
+        <div class="note-card note-1">
+          <span>🐰</span>
+          <p>Happyyy birthdayyy<br>my cutest bunnnyyy 🎂</p>
+        </div>
+        <div class="note-card note-2">
+          <span>💙</span>
+          <p>You are my favorite<br>Valorant discovery ✨</p>
+        </div>
+        <div class="note-card note-3">
+          <span>🎂</span>
+          <p>I choose you<br>a thousand times over 🐰</p>
+        </div>
+      </div>
+
+      <!-- Final signature -->
+      <p class="finale-signature" id="finaleSignature"></p>
+
+      <!-- Restart button -->
+      <button class="btn-restart" id="restartBtn" aria-label="Go back to beginning">
+        <i class="fa-solid fa-rotate-left"></i> Start Over
+      </button>
+    </div>
+  </section>
+
+
+  <script>
+  // ======================================================
+  //  🌹 ROMANTIC WEB ANIMATION — MAIN SCRIPT
+  // ======================================================
+
+  // --- Custom Cursor ---
+  const cursor    = document.getElementById('cursor');
+  const cursorDot = document.getElementById('cursorDot');
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top  = mouseY + 'px';
+
+    // Spawn floating hearts randomly with throttling for smooth 60fps performance
+    if (Math.random() < 0.04) spawnHeart(e.clientX, e.clientY);
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.12;
+    cursorY += (mouseY - cursorY) * 0.12;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top  = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // --- Floating Hearts on Cursor (pastel blue bunny theme) ---
+  const heartChars = ['💙', '🐰', '💕', '✨', '💖'];
+  function spawnHeart(x, y) {
+    const h = document.createElement('div');
+    h.className = 'heart-cursor';
+    h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+    h.style.left = (x + Math.random() * 30 - 15) + 'px';
+    h.style.top  = (y + Math.random() * 30 - 15) + 'px';
+    h.style.fontSize = (Math.random() * 12 + 12) + 'px';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 1200);
+  }
+
+  // --- SCENE 1: Generate Petals (baby pastel blue) ---
+  const petalColors = [
+    'radial-gradient(ellipse at 30% 30%, #e3f2fd, #8ec8ff)',
+    'radial-gradient(ellipse at 30% 30%, #d4eafd, #5aa9e6)',
+    'radial-gradient(ellipse at 30% 30%, #f0f8ff, #bae0ff)',
+    'radial-gradient(ellipse at 30% 30%, #e0f0ff, #7fb3d5)',
+    'radial-gradient(ellipse at 30% 30%, #ffffff, #8ec8ff)',
+  ];
+  const container = document.getElementById('petalsContainer');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left              = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (Math.random() * 6 + 5) + 's';
+    p.style.animationDelay    = (Math.random() * 10) + 's';
+    p.style.background        = petalColors[Math.floor(Math.random() * petalColors.length)];
+    p.style.width             = (Math.random() * 12 + 12) + 'px';
+    p.style.height            = (Math.random() * 14 + 14) + 'px';
+    p.style.opacity           = Math.random() * 0.4 + 0.5;
+    container.appendChild(p);
+  }
+
+  // --- SCENE 1: Typewriter Effect ---
+  const quotes = [
+    "Happyyy birthdayyy, my bunnnyyy...",
+    "you're my favorite forever 🐰💙"
+  ];
+  const typedEl = document.getElementById('typedText');
+  let qIdx = 0, charIdx = 0, isDeleting = false;
+
+  function typeLoop() {
+    const current = quotes[qIdx];
+    if (!isDeleting) {
+      typedEl.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        if (qIdx === quotes.length - 1) return; // stop after last quote
+        setTimeout(() => { isDeleting = true; typeLoop(); }, 2000);
+        return;
+      }
+    } else {
+      typedEl.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        isDeleting = false;
+        qIdx = (qIdx + 1) % quotes.length;
+      }
+    }
+    const speed = isDeleting ? 40 : 70;
+    setTimeout(typeLoop, speed);
+  }
+  // Start smoothly after CSS fadeInUp animation completes
+  setTimeout(typeLoop, 2200);
+
+  // --- SCENE 2: Generate Stars ---
+  const starsEl = document.getElementById('starsContainer');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left             = Math.random() * 100 + '%';
+    s.style.top              = Math.random() * 100 + '%';
+    s.style.animationDuration = (Math.random() * 3 + 1.5) + 's';
+    s.style.animationDelay   = (Math.random() * 4) + 's';
+    s.style.width = s.style.height = (Math.random() * 3 + 1) + 'px';
+    // Cool pastel blue star colors
+    const starColors = ['#f0f8ff', '#d4eafd', '#bae0ff', '#ffffff', '#e0f0ff'];
+    s.style.background = starColors[Math.floor(Math.random() * starColors.length)];
+    starsEl.appendChild(s);
+  }
+
+  // Parallax stars on mouse move
+  document.getElementById('scene-2').addEventListener('mousemove', (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+    const cy = (e.clientY - rect.top - rect.height / 2) / rect.height;
+    starsEl.style.transform = `translate(${cx * 20}px, ${cy * 20}px)`;
+  });
+
+  // --- SCENE 2: Sparkles ---
+  const sparkleEl = document.getElementById('sparklesContainer');
+  const sparkleChars = ['✦', '✧', '✨', '⋆', '✵'];
+  for (let i = 0; i < 12; i++) {
+    const sp = document.createElement('span');
+    sp.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+    sp.style.left             = Math.random() * 90 + 5 + '%';
+    sp.style.top              = Math.random() * 90 + 5 + '%';
+    sp.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    sp.style.animationDelay   = (Math.random() * 3) + 's';
+    sp.style.color            = ['#fff', '#8ec8ff', '#d4eafd'][Math.floor(Math.random() * 3)];
+    sparkleEl.appendChild(sp);
+  }
+
+  // --- SCENE 2: Snow (Snowman Sia winter) ---
+  const snowEl = document.getElementById('snowContainer');
+  if (snowEl) {
+    const snowChars = ['❄', '❅', '•', '❆'];
+    for (let i = 0; i < 22; i++) {
+      const fl = document.createElement('div');
+      fl.className = 'snowflake';
+      fl.textContent = snowChars[Math.floor(Math.random() * snowChars.length)];
+      fl.style.left = Math.random() * 100 + 'vw';
+      fl.style.animationDuration = (Math.random() * 6 + 9) + 's';
+      fl.style.animationDelay = (Math.random() * 8) + 's';
+      fl.style.fontSize = (Math.random() * 10 + 8) + 'px';
+      fl.style.opacity = Math.random() * 0.5 + 0.5;
+      snowEl.appendChild(fl);
+    }
+  }
+
+  // --- SCENE 2: Snowman Audio (here, play this love) — Hybrid Local MP3 + YouTube ---
+  let snowmanYT = null;
+  let snowmanPlaying = false;
+  let snowmanUseLocal = true;
+  const snowmanBtn = document.getElementById('snowmanPlayBtn');
+  const snowmanLocal = document.getElementById('snowmanLocal');
+
+  function onYouTubeIframeAPIReady() {
+    try {
+      snowmanYT = new YT.Player('yt-player', {
+        height: '200', width: '200', videoId: 'gset79KMmt0',
+        playerVars: { loop: 1, playlist: 'gset79KMmt0', modestbranding: 1, rel: 0, playsinline: 1, enablejsapi: 1, origin: window.location.origin }
+      });
+    } catch(e) { console.warn('YT init failed', e); }
+  }
+  // Load YouTube IFrame API early
+  (function loadYT(){
+    if (document.querySelector('script[src*="iframe_api"]')) return;
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    tag.async = true;
+    document.head.appendChild(tag);
+  })();
+  window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+  // Local audio error → fallback to YouTube
+  if (snowmanLocal) {
+    snowmanLocal.addEventListener('error', () => { snowmanUseLocal = false; });
+    // If local file 404, browser will error and we fallback
+    snowmanLocal.addEventListener('canplay', () => { snowmanUseLocal = true; });
+  }
+
+  function setPlayingUI(isPlaying) {
+    if (isPlaying) {
+      snowmanBtn.classList.add('playing');
+      const t = snowmanBtn.querySelector('.btn-audio-text'); if (t) t.textContent = 'pause, my love ♡';
+      const ic = snowmanBtn.querySelector('.btn-audio-icon'); if (ic) ic.textContent = '❄️❚❚';
+    } else {
+      snowmanBtn.classList.remove('playing');
+      const t = snowmanBtn.querySelector('.btn-audio-text'); if (t) t.textContent = 'here, play this love';
+      const ic = snowmanBtn.querySelector('.btn-audio-icon'); if (ic) ic.textContent = '❄️▶';
+    }
+  }
+
+  if (snowmanBtn) {
+    snowmanBtn.addEventListener('click', async () => {
+      // Prefer local MP3 if available (whole song)
+      if (snowmanLocal && snowmanUseLocal) {
+        try {
+          if (snowmanLocal.paused) {
+            // Pause YT if playing
+            if (snowmanYT && snowmanPlaying && typeof snowmanYT.pauseVideo === 'function') { try { snowmanYT.pauseVideo(); } catch(e){} snowmanPlaying=false; }
+            await snowmanLocal.play();
+            setPlayingUI(true);
+            snowmanLocal.onended = () => setPlayingUI(false);
+            return;
+          } else {
+            snowmanLocal.pause();
+            setPlayingUI(false);
+            return;
+          }
+        } catch(e) {
+          // Local failed, try YouTube
+          snowmanUseLocal = false;
+        }
+      }
+      // Fallback to YouTube iframe
+      if (!snowmanYT || typeof snowmanYT.playVideo !== 'function') {
+        window.open('https://www.youtube.com/watch?v=gset79KMmt0', '_blank');
+        return;
+      }
+      try {
+        if (!snowmanPlaying) {
+          if (snowmanLocal && !snowmanLocal.paused) snowmanLocal.pause();
+          snowmanYT.playVideo();
+          setPlayingUI(true);
+          snowmanPlaying = true;
+        } else {
+          snowmanYT.pauseVideo();
+          setPlayingUI(false);
+          snowmanPlaying = false;
+        }
+      } catch(e) {
+        window.open('https://www.youtube.com/watch?v=gset79KMmt0', '_blank');
+      }
+    });
+  }
+
+  // --- SCENE 3: Quote Rotation (Enhanced) ---
+  const loveQuotes = [
+    "In the quiet garden of my heart, your name blooms without end.",
+    "You are the morning dew on every petal of my days.",
+    "Let me be the rain that kisses your garden, season after season.",
+    "Your eyes — a meadow where I lose myself to find us.",
+    "Every petal I pick whispers only you, only you.",
+    "Love grew wild when you walked into my garden.",
+    "You are the soft blue hour between dusk and dream.",
+    "Stay, love — and let this garden be our forever. 🌸"
+  ];
+  let currentQuote = 0;
+  let quoteTyping  = false;
+  const quoteEl         = document.getElementById('loveQuote');
+  const quoteCard       = document.getElementById('quoteCard');
+  const quoteCounter    = document.getElementById('quoteCounter');
+  const roseBtn         = document.getElementById('pickRoseBtn');
+  const petalEmitter    = document.getElementById('petalEmitter');
+  const scene3          = document.getElementById('scene-3');
+  const scene3Ripple    = document.getElementById('scene3Ripple');
+  const scene3BgParts   = document.getElementById('scene3BgParticles');
+
+  // Type a string into an element character by character
+  function typeQuote(el, text, speed, onDone) {
+    el.textContent = '';
+    let i = 0;
+    const iv = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) {
+        clearInterval(iv);
+        if (onDone) onDone();
+      }
+    }, speed);
+  }
+
+  // Spawn flying petals FROM the button (close-up burst)
+  function burstPetals(btn) {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top  + rect.height / 2;
+    const icons = ['💙','🐰','🌹','🌸','💕','🌷','💖','✨'];
+    const count = 20;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal-burst';
+      p.textContent = icons[Math.floor(Math.random() * icons.length)];
+      p.style.left     = cx + 'px';
+      p.style.top      = cy + 'px';
+      p.style.fontSize = (Math.random() * 14 + 14) + 'px';
+      const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.4;
+      const dist  = Math.random() * 140 + 80;
+      p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+      p.style.animationDuration = (Math.random() * 0.4 + 0.8) + 's';
+      p.style.animationDelay    = (Math.random() * 0.15) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 1300);
+    }
+  }
+
+  // Background ripple circles from center of scene
+  function triggerBgRipple() {
+    const rect  = scene3.getBoundingClientRect();
+    const cx    = rect.width  / 2;
+    const cy    = rect.height / 2;
+    const sizes = [180, 320, 500];
+    sizes.forEach((sz, idx) => {
+      const r = document.createElement('div');
+      r.className = 'ripple-circle';
+      r.style.width  = sz + 'px';
+      r.style.height = sz + 'px';
+      r.style.left   = cx + 'px';
+      r.style.top    = cy + 'px';
+      r.style.animationDelay = (idx * 0.18) + 's';
+      r.style.borderColor    = idx === 0
+        ? 'rgba(58,141,222,0.6)'
+        : idx === 1
+          ? 'rgba(90,169,230,0.4)'
+          : 'rgba(142,200,255,0.25)';
+      scene3Ripple.appendChild(r);
+      setTimeout(() => r.remove(), 1800 + idx * 200);
+    });
+  }
+
+  // Background-wide floating petals (large, drifting up)
+  function spawnBgPetals() {
+    const bgIcons = ['💙','🐰','❄️','💮','✨','🐾'];
+    const count = 14;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'bg-petal';
+      p.textContent = bgIcons[Math.floor(Math.random() * bgIcons.length)];
+      p.style.left             = (Math.random() * 95 + 2.5) + '%';
+      p.style.bottom           = '-40px';
+      p.style.fontSize         = (Math.random() * 20 + 18) + 'px';
+      p.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
+      p.style.animationDelay   = (Math.random() * 0.8) + 's';
+      scene3BgParts.appendChild(p);
+      setTimeout(() => p.remove(), 5500);
+    }
+  }
+
+  // Background gradient pulse
+  function pulseBg() {
+    scene3.classList.add('bg-pulse');
+    setTimeout(() => scene3.classList.remove('bg-pulse'), 700);
+  }
+
+  // Card glow flash
+  function flashCard() {
+    quoteCard.style.transition = 'none';
+    quoteCard.style.boxShadow  = '0 0 0 4px rgba(58,141,222,0.6), 0 0 40px rgba(58,141,222,0.4)';
+    quoteCard.style.transform  = 'scale(1.04)';
+    setTimeout(() => {
+      quoteCard.style.transition = 'all 0.6s ease';
+      quoteCard.style.boxShadow  = '';
+      quoteCard.style.transform  = 'scale(1)';
+    }, 120);
+  }
+
+  // Initial quote typed on scene load
+  function initQuote() {
+    typeQuote(quoteEl, loveQuotes[0], 45);
+  }
+  // Trigger on first visibility
+  const q3Observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && quoteEl.textContent === '') initQuote();
+    });
+  }, { threshold: 0.4 });
+  q3Observer.observe(document.getElementById('scene-3'));
+
+  roseBtn.addEventListener('click', (e) => {
+    if (quoteTyping) return;
+    quoteTyping = true;
+
+    // 1. Heavy petal burst from button
+    burstPetals(roseBtn);
+
+    // 2. Background ripple wave
+    triggerBgRipple();
+
+    // 3. Background petals float up
+    spawnBgPetals();
+
+    // 4. Background gradient pulse
+    pulseBg();
+
+    // 5. Card flash
+    flashCard();
+
+    // 6. Slide old text out
+    quoteEl.style.transition  = 'opacity 0.25s ease, transform 0.25s ease';
+    quoteEl.style.opacity     = '0';
+    quoteEl.style.transform   = 'translateY(-18px)';
+
+
+    setTimeout(() => {
+      // 4. Advance to next quote
+      currentQuote = (currentQuote + 1) % loveQuotes.length;
+
+      // 5. Update counter with bounce
+      quoteCounter.style.transition = 'transform 0.2s ease';
+      quoteCounter.style.transform  = 'scale(1.4)';
+      quoteCounter.textContent      = `${currentQuote + 1} / ${loveQuotes.length}`;
+      setTimeout(() => {
+        quoteCounter.style.transform = 'scale(1)';
+      }, 200);
+
+      // 6. Reset text position for entry
+      quoteEl.style.transition = 'none';
+      quoteEl.style.transform  = 'translateY(18px)';
+      quoteEl.style.opacity    = '0';
+
+      setTimeout(() => {
+        quoteEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        quoteEl.style.opacity    = '1';
+        quoteEl.style.transform  = 'translateY(0)';
+
+        // 7. Typewriter for new quote
+        typeQuote(quoteEl, loveQuotes[currentQuote], 40, () => {
+          quoteTyping = false;
+        });
+      }, 60);
+    }, 280);
+
+    // 8. Spin & scale the rose icon (now pink rose gif)
+    const icon = roseBtn.querySelector('.btn-rose-img, .btn-icon');
+    if (icon) {
+      icon.style.transition = 'transform 0.5s cubic-bezier(.36,.07,.19,.97)';
+      icon.style.transform  = 'rotate(360deg) scale(1.5)';
+      setTimeout(() => {
+        icon.style.transition = '';
+        icon.style.transform  = '';
+      }, 500);
+    }
+  });
+
+  // --- SCENE 5: BUNNY BIRTHDAY LETTER (Letterrr to Him) ---
+  const envelopeBunny    = document.getElementById('envelopeBunny');
+  const letterPaperBunny = document.getElementById('letterPaperBunny');
+  const bunnyHeadingEl   = document.getElementById('bunnyHeading');
+  const bunnyBodyEl      = document.getElementById('bunnyBody');
+  const bunnySignEl      = document.getElementById('bunnySign');
+
+  const bunnyHeading = "Happy birthday, Bunny ❤️";
+  const bunnyBody = `I don't even know how to start this properly 😭
+I have so much I want to say to you, but somehow whenever it actually comes to saying it, I don't know how to put it into words.
+
+It's still so weird to think that we met because of a random Valorant match. Like… really? 😭
+That one 11 PM game, and somehow I ended up meeting *you*.
+
+And I don't think I realized that night how much you would come to mean to me.
+
+I think I fell for you in the smallest ways.
+
+Through our conversations.
+Through your voice.
+Through your eyes that I swear have something in them that makes me forget what I was saying. 😭
+Through the way you talk.
+Through the way you are.
+
+And obviously… through all our stupid fights too. 😭
+
+I know I get angry. A lot. And I know sometimes I create arguments out of literally nothing 💀
+And then you come with your little “sorry sorry” and somehow I'm supposed to stay mad at you. 😭
+
+But even in those moments, even when I'm angry, even when things aren't perfect…
+
+I still love you.
+
+Actually, I think that's what I want you to know most.
+
+I love you, Bunny.
+
+Not just when everything is good.
+Not just when we're being cute.
+Not just when we're laughing.
+
+I love you even through the messy parts.
+
+And I've tried not to fall this hard, you know. I really have. 😭
+I've told myself to slow down, to not get too attached, to not think so far ahead.
+
+But then I get to know another little part of you…
+
+and there I am, falling for you all over again.
+
+I don't know what our future is going to look like. I don't want to rush it either. I just know that when I think about the future, there's a part of me that hopes you're in it.
+
+And that's enough for me right now.
+
+I just want to keep knowing you.
+Keep annoying you.
+Keep fighting with you over stupid things.
+Keep hearing your “sorry sorry.” 😭
+Keep making memories with you.
+
+And on your birthday, more than anything, I hope life is kind to you.
+
+I hope you get everything you've been wishing for. Every goal, every dream, every little thing you've kept in your heart.
+
+I hope you become everything you want to become.
+
+And I hope, somewhere along the way, you always remember that there was this one girl who met you in a random Valorant game…
+
+and somehow ended up loving you this much.
+
+I don't think I could've planned any of this.
+
+But if I could go back to that night and meet you all over again…
+
+I would.
+
+Every single time.
+
+Happy birthday, my Bunny. 🐰❤️
+
+I love you.
+
+And honestly… I don't think I know how to say just *how much*.
+
+Maybe I don't need to.
+
+Maybe you can just feel it in all the little things I do.
+
+❤️`;
+
+  let bunnyOpened = false;
+  let bunnyTyping = false;
+
+  function typeTextBunny(el, text, speed, callback) {
+    let i = 0;
+    el.textContent = '';
+    // Respect pre-wrap: \n will render as line break via CSS white-space:pre-wrap
+    const interval = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      // Auto-scroll bunny paper to keep typing visible
+      if (letterPaperBunny.classList.contains('revealed')) {
+        letterPaperBunny.scrollTop = letterPaperBunny.scrollHeight;
+      }
+      if (i >= text.length) {
+        clearInterval(interval);
+        if (callback) callback();
+      }
+    }, speed);
+  }
+
+  function openBunnyLetter() {
+    if (bunnyOpened || bunnyTyping) return;
+    bunnyTyping = true;
+
+    // Bunny burst effect
+    const bunnyIcons = ['🐰','💙','✨','🎂','💕','🐾'];
+    const rect = envelopeBunny.getBoundingClientRect();
+    const cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+    for (let i=0;i<16;i++){
+      const p=document.createElement('div');
+      p.className='petal-burst';
+      p.textContent=bunnyIcons[Math.floor(Math.random()*bunnyIcons.length)];
+      p.style.left=cx+'px'; p.style.top=cy+'px';
+      p.style.fontSize=(Math.random()*10+16)+'px';
+      const angle=(Math.PI*2/16)*i + (Math.random()-0.5)*0.3;
+      const dist=Math.random()*130+70;
+      p.style.setProperty('--tx', Math.cos(angle)*dist+'px');
+      p.style.setProperty('--ty', Math.sin(angle)*dist+'px');
+      p.style.animationDuration=(Math.random()*0.4+0.8)+'s';
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),1300);
+    }
+
+    envelopeBunny.classList.add('open');
+
+    setTimeout(() => {
+      letterPaperBunny.classList.add('revealed');
+      setTimeout(() => {
+        typeTextBunny(bunnyHeadingEl, bunnyHeading, 55, () => {
+          setTimeout(() => {
+            typeTextBunny(bunnyBodyEl, bunnyBody, 14, () => {
+              letterPaperBunny.classList.add('sign-visible');
+              bunnyOpened = true;
+              bunnyTyping = false;
+            });
+          }, 400);
+        });
+      }, 600);
+    }, 1000);
+  }
+
+  if (envelopeBunny) {
+    envelopeBunny.addEventListener('click', openBunnyLetter);
+    envelopeBunny.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openBunnyLetter(); });
+  }
+
+  // --- SCENE 7: Confetti (pastel blue) ---
+  const confettiColors = ['#5aa9e6','#8ec8ff','#3a8dde','#7fb3d5','#d4eafd','#bae0ff','#2a6cb8','#e0f0ff'];
+  const confettiEl = document.getElementById('confettiContainer');
+
+  // --- SCENE 7: Poem Typewriter ---
+  const poemLines = [
+    "Happyyy birthdayyy, my dearest bunnnyyy,",
+    "You make my world soft, pastel-blue and funny.",
+    "Every Valorant night led me to you,",
+    "And every day I fall more — it's true. 🐰💙",
+  ];
+  const signatureText = "— Happyyy birthdayyy, my bunnnyyy 🐰💙 Forever yours";
+  let poemStarted = false;
+
+  function typeLineSequential(lines, els, speed, lineDelay, onAllDone) {
+    let li = 0;
+    function nextLine() {
+      if (li >= lines.length) { if (onAllDone) onAllDone(); return; }
+      let ci = 0;
+      const el = els[li];
+      el.textContent = '';
+      const iv = setInterval(() => {
+        el.textContent += lines[li][ci];
+        ci++;
+        if (ci >= lines[li].length) {
+          clearInterval(iv);
+          li++;
+          setTimeout(nextLine, lineDelay);
+        }
+      }, speed);
+    }
+    nextLine();
+  }
+
+  function startFinalePoem() {
+    if (poemStarted) return;
+    poemStarted = true;
+
+    const lineEls = [
+      document.getElementById('poemLine1'),
+      document.getElementById('poemLine2'),
+      document.getElementById('poemLine3'),
+      document.getElementById('poemLine4'),
+    ];
+    const sigEl = document.getElementById('finaleSignature');
+
+    // Start typing after poem section fades in (CSS animation delay = 2s)
+    setTimeout(() => {
+      typeLineSequential(poemLines, lineEls, 38, 300, () => {
+        // After poem done, type signature
+        setTimeout(() => {
+          let si = 0;
+          sigEl.textContent = '';
+          const iv = setInterval(() => {
+            sigEl.textContent += signatureText[si];
+            si++;
+            if (si >= signatureText.length) clearInterval(iv);
+          }, 55);
+        }, 600);
+      });
+    }, 2200);
+  }
+
+  // --- SCENE 6: Confetti ---
+  function createConfetti() {
+
+    confettiEl.innerHTML = '';
+    for (let i = 0; i < 32; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left             = Math.random() * 100 + 'vw';
+      c.style.top              = -20 + 'px';
+      c.style.background       = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+      c.style.width            = (Math.random() * 8 + 6)  + 'px';
+      c.style.height           = (Math.random() * 8 + 6)  + 'px';
+      c.style.borderRadius     = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      c.style.animationDelay   = (Math.random() * 5) + 's';
+      c.style.setProperty('--cx', (Math.random() * 100 - 50) + 'px');
+      confettiEl.appendChild(c);
+    }
+  }
+
+  // --- Restart ---
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // --- Scroll Navigation Dots (5 scenes: birthday only) ---
+  const scenes     = document.querySelectorAll('.scene');
+  const navDots    = document.querySelectorAll('.scroll-dot');
+  const sceneIds   = ['scene-1','scene-2','scene-3','scene-bunny','scene-6'];
+
+  navDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const sceneIdx = +dot.dataset.scene;
+      document.getElementById(sceneIds[sceneIdx]).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // IntersectionObserver for scene tracking & reveal animations
+  const sceneObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id    = entry.target.id;
+        const idx   = sceneIds.indexOf(id);
+        navDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+        // Scene-specific triggers
+        if (id === 'scene-6') {
+          createConfetti();
+          startFinalePoem();
+        }
+
+        if (id === 'scene-2') {
+          // Trigger star reset on re-entry
+          document.querySelector('.moon').style.animation = 'none';
+          setTimeout(() => document.querySelector('.moon').style.animation = '', 10);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  scenes.forEach(s => sceneObserver.observe(s));
+
+  // Reveal observer
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
